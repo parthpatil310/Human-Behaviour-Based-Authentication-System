@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Advanced Dashboard</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body{
+    font-family: Arial;
+    background: #0f172a;
+    color: white;
+    text-align: center;
+}
+
+.card{
+    background:#1e293b;
+    padding:20px;
+    margin:20px auto;
+    width:300px;
+    border-radius:10px;
+    box-shadow:0 0 10px cyan;
+}
+
+h1{
+    color: cyan;
+}
+
+canvas{
+    background:white;
+    border-radius:10px;
+    padding:10px;
+}
+</style>
+
+</head>
+<body>
+
+<h1>🔐 Behaviour Authentication Dashboard</h1>
+
+<div class="card">
+    <h3>Email</h3>
+    <p id="email"></p>
+</div>
+
+<div class="card">
+    <h3>Trust Score</h3>
+    <h2 id="trust"></h2>
+</div>
+
+<div class="card">
+    <h3>Security Level</h3>
+    <p id="level"></p>
+</div>
+
+<div class="card">
+    <h3>Trust Graph</h3>
+    <canvas id="chart" width="300" height="200"></canvas>
+</div>
+
+<script>
+
+// -------- LOAD DATA --------
+let email = localStorage.getItem("email")
+let trust = parseInt(localStorage.getItem("trust")) || 0
+
+document.getElementById("email").innerText = email
+document.getElementById("trust").innerText = trust
+
+// -------- SECURITY LEVEL --------
+let level = "Low Risk ❌"
+if(trust >= 75) level = "High Trust ✅"
+else if(trust >= 50) level = "Medium Risk ⚠️"
+
+document.getElementById("level").innerText = level
+
+// -------- GRAPH DATA --------
+let history = JSON.parse(localStorage.getItem("history")) || []
+
+history.push(trust)
+
+// keep last 10 values
+if(history.length > 10) history.shift()
+
+localStorage.setItem("history", JSON.stringify(history))
+
+// -------- CHART --------
+new Chart(document.getElementById("chart"), {
+type: 'line',
+data: {
+    labels: history.map((_,i)=>"Login "+(i+1)),
+    datasets: [{
+        label: "Trust Score",
+        data: history,
+        fill: false,
+        tension: 0.3
+    }]
+}
+})
+
+</script>
+
+</body>
+</html>

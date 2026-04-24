@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+<script src="/static/script.js"></script>
+
+<style>
+body{
+font-family: Arial;
+background: linear-gradient(135deg,#667eea,#764ba2);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+}
+
+.card{
+background: rgba(255,255,255,0.1);
+padding:30px;
+border-radius:15px;
+backdrop-filter: blur(10px);
+width:300px;
+}
+
+input,button{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:none;
+border-radius:8px;
+}
+
+button{
+background:#00c6ff;
+color:white;
+cursor:pointer;
+}
+</style>
+
+</head>
+<body>
+
+<div class="card">
+<h2>Login</h2>
+
+<input id="email" placeholder="email" autocomplete="off">
+<input id="password" type="password" placeholder="Password" autocomplete="new-password">
+
+<button onclick="loginUser()">Login</button>
+
+<div id="questionBox" style="display:none;">
+    <p id="question"></p>
+    <input id="ans" placeholder="Answer">
+    <button onclick="verifyAnswer()">Submit</button>
+</div>
+
+<div id="otpBox" style="display:none;">
+    <input id="otp" placeholder="Enter OTP">
+    <button onclick="verifyOTP()">Verify OTP</button>
+</div>
+<br>
+<a href="/register" style="color:white;">Register</a>
+</div>
+
+</body>
+</html>

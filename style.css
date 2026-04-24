@@ -1,0 +1,27 @@
+body {
+  background:#121212;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+.card {
+  background:#1e1e1e;
+  padding:30px;
+  border-radius:10px;
+  text-align:center;
+}
+
+input {
+  padding:10px;
+  margin:10px;
+  width:90%;
+}
+
+button {
+  padding:10px;
+  background:#00ff99;
+  border:none;
+}

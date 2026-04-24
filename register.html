@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Register</title>
+<script src="/static/script.js"></script>
+
+<style>
+body{
+font-family: Arial;
+background: linear-gradient(135deg,#43cea2,#185a9d);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+}
+
+.card{
+background: rgba(255,255,255,0.1);
+padding:30px;
+border-radius:15px;
+backdrop-filter: blur(10px);
+width:300px;
+}
+input,button{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:none;
+border-radius:8px;
+}
+button{
+background:#ff7eb3;
+color:white;
+cursor:pointer;
+}
+</style>
+
+</head>
+<body>
+
+<div class="card">
+<h2>Register</h2>
+
+<input id="email" placeholder="email" autocomplete="off">
+<input id="password" type="password" placeholder="Password" autocomplete="new-password">
+<input id="secret" placeholder="Secret Question" autocomplete="off">
+<input id="answer" placeholder="Answer" autocomplete="off">
+<button onclick="registerUser()">Register</button>
+
+<p id="msg"></p>
+
+<a href="/" style="color:white;">Login</a>
+</div>
+
+</body>
+</html>
